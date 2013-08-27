@@ -5,7 +5,6 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from contacts.models import DZContact
 from contacts.serializers import DZContactSerializer
-import pdb
 
 class JSONResponse(HttpResponse):
     """
@@ -22,17 +21,16 @@ pass
 
 @csrf_exempt
 def contact_list(request):
-	if request.method == 'GET':
-		contacts = DZContact.objects.all()
-		serializer = DZContactSerializer(contacts)
-		pdb.set_trace()
-		return JSONResponse(serializer.data)
-	elif requst.method == 'POST':
-		data = JSONParser.parse(request)
-		serializer = DZContactSerializer(data = data)
-		if serializer.is_valid():
-			serializer.save()
-			return JSONResponse(serializer.data, status = 201)
-		else:
-			return JSONResponse(serializer.data, status = 400)
+    if request.method == 'GET':
+            contacts = DZContact.objects.all()
+            serializer = DZContactSerializer(contacts)
+            return JSONResponse(serializer.data)
+    elif requst.method == 'POST':
+            data = JSONParser.parse(request)
+            serializer = DZContactSerializer(data = data)
+            if serializer.is_valid():
+                    serializer.save()
+                    return JSONResponse(serializer.data, status = 201)
+            else:
+                    return JSONResponse(serializer.data, status = 400)
 

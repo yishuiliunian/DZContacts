@@ -1,10 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
 from contacts.views import contact_list
-from contacts.views import user_avater
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'DZContacts.views.home', name='home'),
@@ -14,5 +10,4 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
 	url(r'contacts/$', contact_list),
-	url(r'useravater/$',  user_avater),
 )

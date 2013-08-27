@@ -5,7 +5,7 @@ from contacts.models import DZContact
 class DZContactSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = DZContact
-		fields = ('firstName', 'midleName', 'lastName')
+		fields = ('firstName', 'midleName', 'lastName', 'phoneNumber', 'email')
 
 
 

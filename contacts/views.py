@@ -25,10 +25,10 @@ def contact_list(request):
 	if request.method == 'GET':
 		contacts = DZContact.objects.all()
 		serializer = DZContactSerializer(contacts)
-		pdb.set_trace()
 		return JSONResponse(serializer.data)
-	elif requst.method == 'POST':
-		data = JSONParser.parse(request)
+	elif request.method == 'POST':
+		pdb.set_trace()
+		data = JSONParser().parse(request)
 		serializer = DZContactSerializer(data = data)
 		if serializer.is_valid():
 			serializer.save()
@@ -36,3 +36,7 @@ def contact_list(request):
 		else:
 			return JSONResponse(serializer.data, status = 400)
 
+
+def user_avater(request):
+	image_data = open('/Users/dzpqzb/Downloads/avater.jpeg', 'rb').read()
+	return HttpResponse(image_data, mimetype = "image/jpeg")

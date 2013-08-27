@@ -34,3 +34,6 @@ def contact_list(request):
             else:
                     return JSONResponse(serializer.data, status = 400)
 
+def user_avater(request):
+	image_data = open('/Users/dzpqzb/Downloads/avater.jpeg', 'rb').read()
+	return HttpResponse(image_data, mimetype = "image/jpeg")
